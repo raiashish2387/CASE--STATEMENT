@@ -1,0 +1,36 @@
+
+select product_name,company,submitted_via,
+case when submitted_via in ('rferal','postal_mail','email,') then 'outbound'
+     when submitted_via in ('phone','web') then 'inbound'
+     else 'electronics' 
+     end as submission_type 
+     from As_consumer_complaints;
+
+select*,case when submitted_via in ('rferal','postal_mail','email,') then 'outbound' when submitted_via in ('phone','web') then 'inbound'else 'electronics' end as submission_type from As_consumer_complaints;
+
+Select*,
+
+case when upper(product_name) like '%loan' then Loan Type
+     when upper(product_name) in ('bank_account_or_services','mortgage','debt_collection','credit reporting','money transfer') then 'service'
+     else 'others'
+     end as 'finance_type'
+     from As_consumer_complaints;
+     
+Select*,
+
+case when product_name like 'loan' or product_name like 'Loan' then 'Loan Type'
+     when upper(product_name) in ('bank_account_or_services','mortgage','debt_collection','credit reporting','money transfer') then 'service'
+     else 'others'
+     end as 'finance_type'
+     from As_consumer_complaints;
+     
+describe table as_consumer_complaints;
+
+select COMPANY_PUBLIC_RESPONSE from as_consumer_complaints;
+
+
+
+select * from customer;
+
+select * 
+case when city in ('Noida','Gurugram','Faridabad') then 'NCR' else 'Delhi' end as city_type from costumer;
